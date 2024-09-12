@@ -36,6 +36,26 @@ describe('Recintos do Zoologico', () => {
         expect(resultado.recintosViaveis[2]).toBe('Recinto 3 (espaço livre: 2 total: 7)');
         expect(resultado.recintosViaveis.length).toBe(3);
     });
+    test("Deve encontrar recintos 1 e 3 para 1 macaco", () => {
+        const resultado = new RecintosZoo().analisaRecintos("MACACO", 1);
+        expect(resultado.recintosViaveis[0]).toBe('Recinto 1 (espaço livre: 6 total: 10)');
+        expect(resultado.recintosViaveis[1]).toBe('Recinto 3 (espaço livre: 3 total: 7)');
+    });
+    test('Deve encontrar recintos para 2 hipopotamos', () => {
 
+        const resultado = new RecintosZoo().analisaRecintos('HIPOPOTAMO', 2);
+        expect(resultado.erro).toBeFalsy();
+        expect(resultado.recintosViaveis[0]).toBe('Recinto 4 (espaço livre: 0 total: 8)');
+        expect(resultado.recintosViaveis.length).toBe(1);
+    });
+
+    test('Deve encontrar recintos para 2 gazelas', () => {
+
+        const resultado = new RecintosZoo().analisaRecintos('GAZELA', 2);
+        expect(resultado.erro).toBeFalsy();
+        expect(resultado.recintosViaveis[0]).toBe('Recinto 1 (espaço livre: 2 total: 10)');
+        expect(resultado.recintosViaveis[1]).toBe('Recinto 3 (espaço livre: 1 total: 7)');
+        expect(resultado.recintosViaveis.length).toBe(2);
+    });
 });
 
